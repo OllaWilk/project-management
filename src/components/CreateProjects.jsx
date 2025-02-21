@@ -2,12 +2,16 @@ import React from 'react';
 import { Input } from './Input';
 import { Button } from './Button';
 
-export const CreateProjects = () => {
+export const CreateProjects = ({ onClick }) => {
   return (
     <div className='w-[35rem] mt-16'>
       <menu className='flex items-center justify-end gap-4 my-4'>
         <li className='flex justify-between my-4'>
-          <Button name='Cancel' cssStyle='hover:text-stone-500' />
+          <Button
+            onClick={onClick}
+            name='Cancel'
+            cssStyle='hover:text-stone-500'
+          />
         </li>
         <li className='flex justify-between my-4'>
           <Button
