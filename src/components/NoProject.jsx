@@ -3,7 +3,7 @@ import logoImage from '../assets/logo.png';
 import { Title } from './Title';
 import { Button } from './Button';
 
-export const NoProject = ({ onClick }) => {
+export const NoProject = ({ onStartAddProject }) => {
   return (
     <div className='mt-24 text-center w-2/3'>
       <img
@@ -21,7 +21,7 @@ export const NoProject = ({ onClick }) => {
         <Button
           name='Create a new project'
           cssStyle='bg-stone-800 text-stone-50 hover:bg-stone-950'
-          onClick={onClick}
+          onClick={onStartAddProject}
         />
       </p>
     </div>
