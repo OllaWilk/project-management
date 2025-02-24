@@ -3,7 +3,7 @@ import { Title } from './Title';
 import { Button } from './Button';
 import { Project } from './Project';
 
-export const AsideMenu = ({ onStartAddProject, projects }) => {
+export const AsideMenu = ({ onStartAddProject, projects, onSelectProject }) => {
   return (
     <aside className='w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 lg:w-80 rounded-r-xl'>
       <Title title='Your Project' />
@@ -14,7 +14,12 @@ export const AsideMenu = ({ onStartAddProject, projects }) => {
       />
       <ul className='mt-8'>
         {projects.map((project) => (
-          <Project key={project.id} title={project.title} />
+          <Project
+            key={project.id}
+            title={project.title}
+            onSelectProject={onSelectProject}
+            id={project.id}
+          />
         ))}
       </ul>
     </aside>
