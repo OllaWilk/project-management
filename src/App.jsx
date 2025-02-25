@@ -11,6 +11,7 @@ export function App() {
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
+  console.log(projects);
   const handleStartCreatingProject = () => {
     setIsCreatingProject(true);
   };

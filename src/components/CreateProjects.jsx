@@ -19,6 +19,7 @@ export const CreateProjects = ({ onCancel, onSave }) => {
         title,
         description,
         date,
+        tasks: [],
       });
     } else {
       modal.current.open();

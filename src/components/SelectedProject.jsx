@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { Button } from './Button';
 import { Modal } from './Modal';
+import Tasks from './Tasks';
 
 export const SelectedProject = ({ project, onDelete }) => {
-  const { id, title, date, description } = project;
+  const { id, title, date, description, tasks } = project;
   const modal = useRef();
 
   const formattedDate = new Date(date).toLocaleDateString('pl-PL', {
@@ -40,6 +41,7 @@ export const SelectedProject = ({ project, onDelete }) => {
             {description}
           </p>
         </header>
+        <Tasks tasks={tasks} />
       </div>
     </>
   );
