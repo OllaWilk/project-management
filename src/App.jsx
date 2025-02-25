@@ -11,7 +11,24 @@ export function App() {
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
-  console.log(projects);
+  const handleAddTask = (projectId, task) => {
+    setProjects((prevProjects) => {
+      const updatedProject = {
+        ...prevProjects[projectId],
+        tasks: [...prevProjects[projectId].tasks, { text: task, id: uuidv4() }],
+      };
+
+      return {
+        ...prevProjects,
+        [projectId]: updatedProject,
+      };
+    });
+  };
+
+  const handleDeleteTask = () => {
+    console.log('delete task');
+  };
+
   const handleStartCreatingProject = () => {
     setIsCreatingProject(true);
   };
@@ -63,7 +80,11 @@ export function App() {
           onSave={handleSaveProject}
         />
       ) : selectedProject ? (
-        <SelectedProject onDelete={handleDelete} project={selectedProject} />
+        <SelectedProject
+          onDelete={handleDelete}
+          project={selectedProject}
+          onAddTask={handleAddTask}
+        />
       ) : (
         <NoProject onStartAddProject={handleStartCreatingProject} />
       )}
