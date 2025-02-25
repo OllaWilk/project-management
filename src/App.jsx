@@ -10,7 +10,7 @@ export function App() {
   const [projects, setProjects] = useState({});
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  console.log(projects);
+
   const handleStartCreatingProject = () => {
     setIsCreatingProject(true);
   };
@@ -37,7 +37,6 @@ export function App() {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
     setProjects((prevProjects) => {
       const updatedProjects = { ...prevProjects };
       delete updatedProjects[id];
