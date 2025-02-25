@@ -17,7 +17,6 @@ export function App() {
 
   const handleCancelProject = () => {
     setIsCreatingProject(false);
-    setSelectedProjectId(null);
   };
 
   const handleSaveProject = (projectData) => {

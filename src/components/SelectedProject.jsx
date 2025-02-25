@@ -6,7 +6,7 @@ export const SelectedProject = ({ project, onDelete }) => {
   const { id, title, date, description } = project;
   const modal = useRef();
 
-  const formatDate = new Date(date).toLocaleDateString('pl-PL', {
+  const formattedDate = new Date(date).toLocaleDateString('pl-PL', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -35,7 +35,7 @@ export const SelectedProject = ({ project, onDelete }) => {
             <h1 className='text-3xl font-bold text-stone-600 mb-2'>{title}</h1>
             <Button name='delete' onClick={handleDeleteClick} />
           </div>
-          <p className='mb-4 text-stone-400'>{formatDate}</p>
+          <p className='mb-4 text-stone-400'>{formattedDate}</p>
           <p className='mb-4 text-stone-600 whitespace-pre-wrap'>
             {description}
           </p>

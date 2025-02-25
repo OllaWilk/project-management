@@ -14,7 +14,7 @@ export const CreateProjects = ({ onCancel, onSave }) => {
     const description = inputDescription.current.value;
     const date = inputDate.current.value;
 
-    if (title.trim() && description.trim()) {
+    if (title.trim() && description.trim() && date.trim()) {
       onSave({
         title,
         description,
