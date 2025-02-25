@@ -3,7 +3,12 @@ import { Button } from './Button';
 import { Modal } from './Modal';
 import Tasks from './Tasks';
 
-export const SelectedProject = ({ project, onDelete, onAddTask }) => {
+export const SelectedProject = ({
+  project,
+  onDelete,
+  onAddTask,
+  onDeleteTask,
+}) => {
   const { id, title, date, description, tasks } = project;
   const modal = useRef();
 
@@ -41,7 +46,12 @@ export const SelectedProject = ({ project, onDelete, onAddTask }) => {
             {description}
           </p>
         </header>
-        <Tasks tasks={tasks} onAddTask={onAddTask} id={id} />
+        <Tasks
+          tasks={tasks}
+          onAddTask={onAddTask}
+          id={id}
+          onDeleteTask={onDeleteTask}
+        />
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import { CreateTask } from './CreateTask';
 
-const Tasks = ({ tasks, onAddTask, id }) => {
+const Tasks = ({ tasks, onAddTask, id, onDeleteTask }) => {
   const [task, setTask] = useState('');
 
   const handleChange = (event) => {
@@ -36,7 +36,10 @@ const Tasks = ({ tasks, onAddTask, id }) => {
               className='text-stone-800 my-2 flex justify-between my-4'
             >
               <span>{task.text}</span>
-              <button className='text-stone-700 hover:text-red-500'>
+              <button
+                className='text-stone-700 hover:text-red-500'
+                onClick={() => onDeleteTask(id, task.id)}
+              >
                 Clear
               </button>
             </li>

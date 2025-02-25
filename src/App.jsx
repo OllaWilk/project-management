@@ -11,7 +11,9 @@ export function App() {
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
 
+  console.log(projects);
   const handleAddTask = (projectId, task) => {
+    console.log(projectId, task);
     setProjects((prevProjects) => {
       const updatedProject = {
         ...prevProjects[projectId],
@@ -25,8 +27,21 @@ export function App() {
     });
   };
 
-  const handleDeleteTask = () => {
-    console.log('delete task');
+  const handleDeleteTask = (projectId, taskId) => {
+    console.log(projectId, taskId);
+    setProjects((prevProjects) => {
+      const updatedProjects = {
+        ...prevProjects[projectId],
+        tasks: prevProjects[projectId].tasks.filter(
+          (task) => task.id !== taskId
+        ),
+      };
+
+      return {
+        ...prevProjects,
+        [projectId]: updatedProjects,
+      };
+    });
   };
 
   const handleStartCreatingProject = () => {
@@ -84,6 +99,7 @@ export function App() {
           onDelete={handleDelete}
           project={selectedProject}
           onAddTask={handleAddTask}
+          onDeleteTask={handleDeleteTask}
         />
       ) : (
         <NoProject onStartAddProject={handleStartCreatingProject} />
