@@ -13,7 +13,7 @@ export const AsideMenu = ({ onStartAddProject, projects, onSelectProject }) => {
         cssStyle='text-stone-400 bg-stone-700 hover:bg-stone-600 hover:text-stone-100'
       />
       <ul className='mt-8'>
-        {projects.map((project) => (
+        {Object.values(projects).map((project) => (
           <Project
             key={project.id}
             title={project.title}

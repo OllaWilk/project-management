@@ -7,10 +7,10 @@ import { NoProject } from './components/NoProject';
 import { SelectedProject } from './components/SelectedProject';
 
 export function App() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState({});
   const [isCreatingProject, setIsCreatingProject] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-
+  console.log(projects);
   const handleStartCreatingProject = () => {
     setIsCreatingProject(true);
   };
@@ -21,11 +21,14 @@ export function App() {
   };
 
   const handleSaveProject = (projectData) => {
-    const newProject = { ...projectData, id: uuidv4() };
+    const id = uuidv4();
+    const newProject = { ...projectData, id };
 
-    setProjects((prevProjects) => [...prevProjects, newProject]);
+    setProjects((prevProjects) => ({
+      ...prevProjects,
+      [id]: newProject,
+    }));
     setIsCreatingProject(false);
-    setSelectedProjectId(newProject.id);
   };
 
   const handleSelectProject = (id) => {
@@ -33,9 +36,20 @@ export function App() {
     setIsCreatingProject(false);
   };
 
-  const selectedProject = projects.find(
-    (project) => project.id === selectedProjectId
-  );
+  const handleDelete = (id) => {
+    console.log(id);
+    setProjects((prevProjects) => {
+      const updatedProjects = { ...prevProjects };
+      delete updatedProjects[id];
+      return updatedProjects;
+    });
+
+    if (selectedProjectId === id) {
+      setSelectedProjectId(null);
+    }
+  };
+
+  const selectedProject = projects[selectedProjectId] || null;
 
   return (
     <main className='h-screen my-8 flex gap-8'>
@@ -50,7 +64,7 @@ export function App() {
           onSave={handleSaveProject}
         />
       ) : selectedProject ? (
-        <SelectedProject project={selectedProject} />
+        <SelectedProject onDelete={handleDelete} project={selectedProject} />
       ) : (
         <NoProject onStartAddProject={handleStartCreatingProject} />
       )}
